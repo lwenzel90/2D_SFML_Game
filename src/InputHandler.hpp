@@ -1,0 +1,27 @@
+#ifndef INPUT_HANDLER_HPP
+#define INPUT_HANDLER_HPP
+
+class InputHandler {
+public:
+    InputHandler();
+
+    void update();
+    bool isRotateLeft() const;
+    bool isRotateRight() const;
+    bool isMoveForward() const;
+    bool isAttackToggled() const;
+    bool wasAttackJustPressed() const;
+    bool isFastRotateLeft() const;
+    bool isFastRotateRight() const;
+
+private:
+    bool rotateLeft;
+    bool rotateRight;
+    bool moveForward;
+    bool attackToggle;
+    bool prevSpacePressed;
+    bool fastRotateLeft;
+    bool fastRotateRight;
+};
+
+#endif
