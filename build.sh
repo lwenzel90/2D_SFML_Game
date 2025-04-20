@@ -79,8 +79,8 @@ echo "Executable and DLLs should be in: ${DLL_DEST_DIR}"
 echo
 if [ "$ERROR_OCCURRED" -ne 0 ]; then
     echo "Build script finished with errors."
+    echo "Press Enter to exit..."
+    read
 else
     echo "Build script finished successfully."
 fi
-echo "Press Enter to exit..."
-read
