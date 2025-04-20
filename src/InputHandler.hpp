@@ -13,6 +13,11 @@ public:
     bool wasAttackJustPressed() const;
     bool isFastRotateLeft() const;
     bool isFastRotateRight() const;
+    bool isPausePressed() const;
+    bool isMenuUp() const;
+    bool isMenuDown() const;
+    bool isMenuSelect() const;
+
 
 private:
     bool rotateLeft;

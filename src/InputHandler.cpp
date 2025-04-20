@@ -43,3 +43,19 @@ bool InputHandler::isFastRotateLeft() const {
 bool InputHandler::isFastRotateRight() const {
     return fastRotateRight;
 }
+
+bool InputHandler::isPausePressed() const {
+    return sf::Keyboard::isKeyPressed(sf::Keyboard::Escape);
+}
+
+bool InputHandler::isMenuUp() const {
+    return sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W);
+}
+
+bool InputHandler::isMenuDown() const {
+    return sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S);
+}
+
+bool InputHandler::isMenuSelect() const {
+    return sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) || sf::Keyboard::isKeyPressed(sf::Keyboard::Space);
+}

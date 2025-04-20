@@ -5,6 +5,7 @@
 #include "Player.hpp"
 #include "Attack.hpp"
 #include "InputHandler.hpp"
+#include "DebugPanel.hpp"
 
 class Game {
 public:
@@ -12,6 +13,9 @@ public:
     void run(sf::RenderWindow& window);
     bool isRunning() const;
     void stop();
+    void togglePause();
+    void renderPauseMenu(sf::RenderWindow& window, sf::Font& font, const std::vector<std::string>& items, int selected);
+    
 
 private:
     void handleWindowEvents(sf::RenderWindow& window);
@@ -25,6 +29,12 @@ private:
     Attack attack;
     InputHandler inputHandler;
     bool attackToggle;
+    bool paused;
+    float pauseInputCooldown;
+    float pauseMenuInputCooldown; // Cooldown for pause menu input
+    DebugPanel debugPanel;
+    
+
 };
 
 #endif

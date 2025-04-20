@@ -24,19 +24,9 @@ void Player::rotate(float angle) {
     shape.rotate(angle);
 }
 
-void Player::applyMovementForce(float force, float deltaTime) {
-    // force: 1.0 = full forward, 0 = none
-    float angleRad = getRotation() * 3.14159265f / 180.f;
-    sf::Vector2f forward(std::cos(angleRad), std::sin(angleRad));
-    if (force > 0.f) {
-        velocity += forward * (acceleration * force * deltaTime);
-    }
-    updateMovement(deltaTime);
-}
-
-void Player::updateMovement(float deltaTime) {
+void Player::updateMovement(float deltaTime, float force) {
     // Apply friction if not accelerating
-    if (velocity.x != 0.f || velocity.y != 0.f) {
+    if (force == 0.f && (velocity.x != 0.f || velocity.y != 0.f)) {
         sf::Vector2f frictionVec = -velocity;
         float speed = std::sqrt(velocity.x * velocity.x + velocity.y * velocity.y);
         if (speed > 0.f) {
@@ -51,8 +41,17 @@ void Player::updateMovement(float deltaTime) {
     if (speed > maxSpeed) {
         velocity = velocity / speed * maxSpeed;
     }
-    // Update position
-    setPosition(getPosition() + velocity * deltaTime);
+    // Update position using velocity
+    shape.setPosition(shape.getPosition() + velocity * deltaTime);
+}
+
+void Player::applyMovementForce(float force, float deltaTime, float angleDegrees) {
+    // Correct the direction: subtract 90 degrees so 0 points "up"
+    float angleRad = (angleDegrees - 90.f) * 3.14159265f / 180.f;
+    float fx = std::cos(angleRad) * force * acceleration * deltaTime;
+    float fy = std::sin(angleRad) * force * acceleration * deltaTime;
+    velocity.x += fx;
+    velocity.y += fy;
 }
 
 void Player::handleRotation(float rotationSpeed, float deltaTime) {

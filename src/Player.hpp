@@ -14,8 +14,8 @@ public:
     sf::Vector2f getPosition() const;
     float getRotation() const;
 
-    void applyMovementForce(float force, float deltaTime);
-    void updateMovement(float deltaTime);
+    void applyMovementForce(float force, float deltaTime, float angleDegrees);
+    void updateMovement(float deltaTime, float force);
     void setPosition(const sf::Vector2f& position) { shape.setPosition(position); }
 
 private:

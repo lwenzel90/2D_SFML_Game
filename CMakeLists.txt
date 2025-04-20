@@ -9,6 +9,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF) # Prefer standard C++ over compiler extensions
 
+# Add include directory
+include_directories(${CMAKE_SOURCE_DIR}/include)
+
 # --- SFML Setup ---
 # Tell CMake where to find the SFML CMake configuration files within our project
 # Adjust path if your SFML layout differs slightly
@@ -28,6 +31,7 @@ add_executable(${PROJECT_NAME}
     src/Game.cpp
     src/Attack.cpp
     src/InputHandler.cpp
+    src/DebugPanel.cpp
 )
 
 # --- Include Directories ---
