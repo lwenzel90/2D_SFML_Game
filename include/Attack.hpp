@@ -22,6 +22,16 @@ public:
     bool isAttackActive() const;
     void setScreenSize(sf::Vector2u size);
 
+    // Getters for debug controls
+    float getProjectileSize() const;
+    float getShootCooldown() const;
+    float getProjectileSpeed() const;
+
+    // Setters for debug controls
+    void setProjectileSize(float size);
+    void setShootCooldown(float cooldown);
+    void setProjectileSpeed(float speed);
+
     const std::vector<Projectile>& getProjectiles() const;
 
 private:

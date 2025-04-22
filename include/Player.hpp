@@ -18,6 +18,18 @@ public:
     void updateMovement(float deltaTime, float force);
     void setPosition(const sf::Vector2f& position) { shape.setPosition(position); }
 
+    // Getters for debug controls
+    float getAcceleration() const;
+    float getFriction() const;
+    float getMaxSpeed() const;
+    float getScale() const;
+
+    // Setters for debug controls
+    void setAcceleration(float accel);
+    void setFriction(float fric);
+    void setMaxSpeed(float speed);
+    void setScale(float scale);
+
 private:
     sf::ConvexShape shape;
     float speed;

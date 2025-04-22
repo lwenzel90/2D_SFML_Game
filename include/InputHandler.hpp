@@ -20,6 +20,8 @@ public:
     bool isMenuDown() const;
     bool isMenuSelect() const;
 
+    // Debug controls
+    bool isDebugWindowToggled() const;
 
 private:
     bool rotateLeft;
@@ -29,6 +31,10 @@ private:
     bool prevSpacePressed;
     bool fastRotateLeft;
     bool fastRotateRight;
+
+    // Debug controls
+    bool debugWindowToggle;
+    bool prevF1Pressed;
 };
 
 #endif

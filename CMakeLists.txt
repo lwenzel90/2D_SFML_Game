@@ -32,6 +32,7 @@ add_executable(${PROJECT_NAME}
     src/Attack.cpp
     src/InputHandler.cpp
     src/DebugPanel.cpp
+    src/DebugWindow.cpp # Add the new source file here
 )
 
 # --- Include Directories ---

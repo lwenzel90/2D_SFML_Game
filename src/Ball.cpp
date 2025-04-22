@@ -1,5 +1,5 @@
 #include "Ball.hpp"
-#include <iostream> // For std::cout, std::cerr
+
 
 Ball::Ball(float radius, sf::Color color, float x, float y)
     : radius(radius), color(color), x(x), y(y), velocityX(50.0f), velocityY(50.0f) {

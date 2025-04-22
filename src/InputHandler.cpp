@@ -1,9 +1,10 @@
 #include "InputHandler.hpp"
+
 #include <SFML/Window/Keyboard.hpp>
 
 InputHandler::InputHandler()
     : rotateLeft(false), rotateRight(false), moveForward(false), attackToggle(false), prevSpacePressed(false),
-      fastRotateLeft(false), fastRotateRight(false) {}
+      fastRotateLeft(false), fastRotateRight(false), debugWindowToggle(false), prevF1Pressed(false) {}
 
 void InputHandler::update() {
     rotateLeft = sf::Keyboard::isKeyPressed(sf::Keyboard::A);
@@ -18,6 +19,11 @@ void InputHandler::update() {
 
     fastRotateLeft = rotateLeft && shift;
     fastRotateRight = rotateRight && shift;
+    
+    // Debug window toggle with F1
+    bool f1Pressed = sf::Keyboard::isKeyPressed(sf::Keyboard::F1);
+    debugWindowToggle = f1Pressed && !prevF1Pressed;
+    prevF1Pressed = f1Pressed;
 }
 
 bool InputHandler::isRotateLeft() const {
@@ -58,4 +64,8 @@ bool InputHandler::isMenuDown() const {
 
 bool InputHandler::isMenuSelect() const {
     return sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) || sf::Keyboard::isKeyPressed(sf::Keyboard::Space);
+}
+
+bool InputHandler::isDebugWindowToggled() const {
+    return debugWindowToggle;
 }

@@ -27,13 +27,20 @@ public:
     sf::Vector2u getWindowSize(const sf::RenderWindow& window) const;
     void applyFullscreen(sf::RenderWindow& window, bool borderless);
 
+    // Add getters for Player and Attack references
+    Player& getPlayer();
+    Attack& getAttack();
+    
+    // Debug window control
+    void toggleDebugWindow();
+
 private:
     void handleWindowEvents(sf::RenderWindow& window);
     float handleRotation(float deltaTime);
     void handleMovement(float deltaTime);
-    // Add the declaration for handleAttack
     void handleAttack(sf::RenderWindow& window, float deltaTime, float rotationApplied);
     void render(sf::RenderWindow& window);
+    void updateDebugWindow();
 
     bool running;
     Player player;
@@ -54,6 +61,9 @@ private:
     };
     int pauseMenuIndex = 0; // Index for pause menu selection
     std::string windowTitle = "2D SFML Game"; // Store window title here
+    
+    // Debug window controls
+    float debugWindowToggleCooldown = 0.0f;
 };
 
 #endif
